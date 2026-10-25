@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Condomínio Consciente: orientações sobre uso responsável de água e energia e canal para comunicar situações de desperdício nas áreas comuns.">
+  <meta name="theme-color" content="#164194">
+  <title>Condomínio Consciente | Água e energia</title>
+  <style>
+    :root {
+      --blue: #164194;
+      --blue-dark: #0c2758;
+      --green: #1f7a5c;
+      --water: #1f6fb2;
+      --energy: #b86f0a;
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --text: #17202b;
+      --muted: #5b6776;
+      --border: #dbe3ee;
+      --shadow: 0 18px 50px rgba(12, 39, 88, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+    }
+    a { color: var(--blue); }
+
+    .container {
+      width: min(1120px, 100% - 40px);
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 100;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--blue-dark);
+      color: #fff;
+      text-decoration: none;
+      transform: translateY(-150%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex: 0 0 auto;
+      align-self: center;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 0;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 8px 20px rgba(22, 65, 148, 0.22);
+    }
+    .brand-mark .icon { width: 25px; height: 25px; }
+
+    .brand-text strong { display: block; font-size: 1rem; letter-spacing: -0.01em; }
+    .brand-text small { display: block; color: var(--muted); font-size: 0.76rem; line-height: 1.35; }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .site-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .site-nav a:hover { color: var(--blue); }
+    .site-nav .nav-cta {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #fff;
+    }
+    .site-nav .nav-cta:hover { background: var(--blue-dark); color: #fff; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      padding: 72px 0 64px;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.14), transparent 26%),
+        radial-gradient(circle at 12% 90%, rgba(255, 255, 255, 0.1), transparent 30%),
+        linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 58%, var(--green) 100%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -100px;
+      bottom: -140px;
+      width: 380px;
+      height: 380px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      box-shadow: 0 0 0 40px rgba(255, 255, 255, 0.04), 0 0 0 90px rgba(255, 255, 255, 0.03);
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; z-index: 1; max-width: 840px; }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--green);
+    }
+    .hero .eyebrow { color: #b9eed9; }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      max-width: 760px;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 700px;
+      font-size: 1.08rem;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 30px 0 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 11px 18px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font: inherit;
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:focus-visible { outline: 3px solid rgba(255, 255, 255, 0.55); outline-offset: 3px; }
+    .btn-primary { background: #fff; color: var(--blue-dark); }
+    .btn-primary:hover { background: #eef4ff; }
+    .btn-ghost { color: #fff; border-color: rgba(255, 255, 255, 0.4); background: transparent; }
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); }
+    .form-card .btn-primary { background: var(--blue); color: #fff; }
+    .form-card .btn-primary:hover { background: var(--blue-dark); }
+
+    .hero-note {
+      margin: 0;
+      max-width: 620px;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .section { padding: 64px 0; }
+    .section.alt { background: #fff; }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .section-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+    }
+    .section-icon.water { background: #e8f2fb; color: var(--water); }
+    .section-icon.energy { background: #fff4e5; color: var(--energy); }
+    .section-icon.form { background: #eef4ff; color: var(--blue); }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+    }
+    h3 { margin: 0 0 8px; font-size: 1.02rem; }
+
+    .section-intro {
+      margin: 0 0 28px;
+      max-width: 780px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface);
+      box-shadow: 0 8px 24px rgba(12, 39, 88, 0.04);
+    }
+    .card p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+    .card.water { border-top: 3px solid var(--water); }
+    .card.energy { border-top: 3px solid var(--energy); }
+
+    .callout {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-top: 20px;
+      padding: 16px 18px;
+      border: 1px solid #f0d9a8;
+      border-radius: 14px;
+      background: #fff8e8;
+      color: #5b430d;
+      font-size: 0.94rem;
+    }
+    .callout .icon { color: #a86b00; }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .checklist li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+    }
+    .checklist .icon { color: var(--green); margin-top: 2px; }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: start;
+      margin-top: 24px;
+    }
+
+    .panel {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #fff;
+    }
+    .panel p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+    .panel .panel-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .panel .panel-head .icon { color: var(--blue); }
+
+    .urgent {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-top: 20px;
+      padding: 16px 18px;
+      border: 1px solid #f3c7c7;
+      border-radius: 14px;
+      background: #fff1f1;
+      color: #7a1f1f;
+      font-size: 0.94rem;
+    }
+
+    .form-section { background: linear-gradient(180deg, #fff 0%, var(--bg) 100%); }
+
+    .form-layout {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .form-info h2 { margin-bottom: 12px; }
+    .form-info > p { color: var(--muted); }
+
+    .privacy {
+      margin-top: 20px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #f8fafc;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .privacy strong {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .privacy .icon { width: 20px; height: 20px; color: var(--blue); }
+    .privacy p { margin: 0; }
+
+    .form-card {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .field { margin-bottom: 18px; }
+    .field:last-of-type { margin-bottom: 0; }
+    .field > label,
+    .field > legend {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+    fieldset {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      min-width: 0;
+    }
+    legend { padding: 0; }
+
+    .req { color: #b42318; }
+    .optional { color: var(--muted); font-weight: 400; }
+
+    input[type="text"],
+    input[type="datetime-local"],
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--text);
+      font: inherit;
+      font-size: 0.95rem;
+    }
+    input[type="text"]::placeholder,
+    textarea::placeholder { color: #8a97a8; }
+    input:focus,
+    textarea:focus {
+      outline: 3px solid rgba(22, 65, 148, 0.18);
+      border-color: var(--blue);
+    }
+    textarea { min-height: 124px; resize: vertical; }
+
+    .field-hint {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .radio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .radio-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+      cursor: pointer;
+      transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+    }
+    .radio-card:hover { border-color: #b9c8de; }
+    .radio-card:has(input:checked) {
+      border-color: var(--blue);
+      background: #eef4ff;
+      box-shadow: inset 0 0 0 1px var(--blue);
+    }
+    .radio-card:focus-within { outline: 3px solid rgba(22, 65, 148, 0.18); outline-offset: 2px; }
+    .radio-card input {
+      margin: 4px 0 0;
+      accent-color: var(--blue);
+      flex: 0 0 auto;
+    }
+    .radio-card .icon { width: 22px; height: 22px; color: var(--water); margin-top: 2px; }
+    .radio-card.energy .icon { color: var(--energy); }
+    .radio-card strong { display: block; font-size: 0.92rem; line-height: 1.3; }
+    .radio-card small { display: block; margin-top: 2px; color: var(--muted); font-size: 0.77rem; line-height: 1.4; }
+
+    .consent {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #f8fafc;
+    }
+    .consent input { margin: 4px 0 0; accent-color: var(--blue); flex: 0 0 auto; }
+    .consent label {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .form-note {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .demo-banner {
+      margin: 0 0 16px;
+      padding: 12px 14px;
+      border: 1px solid #c9d9f5;
+      border-radius: 10px;
+      background: #eef4ff;
+      color: #163f7a;
+      font-size: 0.85rem;
+    }
+    .demo-banner[hidden] { display: none; }
+
+    .btn-block { width: 100%; }
+    #submit-btn { margin-top: 18px; }
+    .form-card .btn:focus-visible { outline-color: rgba(22, 65, 148, 0.35); }
+
+    .status {
+      display: none;
+      margin: 14px 0 0;
+      padding: 12px 14px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      font-size: 0.88rem;
+    }
+    .status.success { display: block; background: #e9f7ef; color: #145c34; border-color: #b9e4c9; }
+    .status.error { display: block; background: #fff1f1; color: #7a1f1f; border-color: #f3c7c7; }
+    .status.info { display: block; background: #eef4ff; color: #163f7a; border-color: #c9d9f5; }
+
+    .hp {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .site-footer {
+      padding: 40px 0 24px;
+      background: #0c1f3f;
+      color: #dbe5f5;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+    }
+    .site-footer strong { color: #fff; }
+    .site-footer p { margin: 0.35em 0; color: #a9b8d4; font-size: 0.9rem; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      color: #8fa3c4;
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 820px) {
+      .header-inner { align-items: flex-start; }
+      .form-layout { grid-template-columns: 1fr; }
+      .split { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .container { width: min(1120px, 100% - 28px); }
+      .hero { padding: 56px 0 48px; }
+      .hero-actions .btn { width: 100%; }
+      .radio-grid, .field-row { grid-template-columns: 1fr; }
+      .form-card { padding: 20px; }
+      .section { padding: 48px 0; }
+      .brand-text small { max-width: 220px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2.5c3.7 4.1 6.5 7.6 6.5 11a6.5 6.5 0 0 1-13 0c0-3.4 2.8-6.9 6.5-11Z"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12l1-8.5Z"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2.8 20h18.4L12 3Z"/><path d="M12 9v5"/><path d="M12 17h.01"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19 7"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.4 3 8 7 10 4-2 7-5.6 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z"/><circle cx="12" cy="10" r="2.2"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V8l8-4 8 4v13"/><path d="M9 21v-5h6v5"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 13h.01M12 13h.01M16 13h.01"/></symbol>
+    <symbol id="i-form" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#topo" aria-label="Condomínio Consciente — início">
+        <span class="brand-mark" aria-hidden="true">
+          <svg class="icon"><use href="#i-drop"></use></svg>
+        </span>
+        <span class="brand-text">
+          <strong>Condomínio Consciente</strong>
+          <small>Água e energia: conhecer para economizar</small>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="#agua">Água</a>
+        <a href="#energia">Energia</a>
+        <a href="#comunicar">O que comunicar</a>
+        <a class="nav-cta" href="#formulario">Comunicar situação</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="topo">
+      <div class="container hero-inner">
+        <p class="eyebrow">Condomínio Saint Marcelin · Água e energia</p>
+        <h1>Pequenas atitudes fazem diferença nas áreas comuns.</h1>
+        <p class="lead">Orientações para moradores e funcionários do Condomínio Saint Marcelin sobre o uso responsável de água e energia — e um canal simples para comunicar situações de desperdício.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#formulario">Comunicar uma situação</a>
+          <a class="btn btn-ghost" href="#agua">Ver orientações</a>
+        </div>
+        <p class="hero-note">Este formulário não é um canal de urgência. Em caso de risco, procure a portaria ou a administração.</p>
+      </div>
+    </section>
+
+    <section class="section" id="agua" aria-labelledby="agua-titulo">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-icon water" aria-hidden="true">
+            <svg class="icon"><use href="#i-drop"></use></svg>
+          </span>
+          <div>
+            <p class="eyebrow">Uso responsável</p>
+            <h2 id="agua-titulo">Água</h2>
+          </div>
+        </div>
+        <p class="section-intro">A água das áreas comuns é um recurso coletivo. Pequenos cuidados e a comunicação rápida de vazamentos ajudam a evitar perdas.</p>
+
+        <div class="grid">
+          <article class="card water">
+            <h3>Feche bem as torneiras</h3>
+            <p>Não deixe a água correr sem necessidade. Ao usar, feche completamente e verifique se não ficou nenhum fio de água.</p>
+          </article>
+          <article class="card water">
+            <h3>Atenção às descargas</h3>
+            <p>Descargas travadas, que não param de correr ou estão com vazamento desperdiçam água continuamente. Avise a administração ou a portaria.</p>
+          </article>
+          <article class="card water">
+            <h3>Observe vazamentos</h3>
+            <p>Torneiras pingando, manchas de umidade e infiltrações podem indicar vazamentos. Quanto antes forem comunicados, melhor.</p>
+          </article>
+          <article class="card water">
+            <h3>Avise a administração</h3>
+            <p>Se perceber água acumulada, infiltração ou fluxo constante, registre a situação pelo formulário ou procure a portaria.</p>
+          </article>
+        </div>
+
+        <div class="callout">
+          <svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg>
+          <p>Não tente consertar instalações hidráulicas. Neste projeto, sua contribuição é observar e comunicar a situação à administração.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="energia" aria-labelledby="energia-titulo">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-icon energy" aria-hidden="true">
+            <svg class="icon"><use href="#i-bolt"></use></svg>
+          </span>
+          <div>
+            <p class="eyebrow">Uso responsável</p>
+            <h2 id="energia-titulo">Energia</h2>
+          </div>
+        </div>
+        <p class="section-intro">A iluminação e os equipamentos das áreas comuns funcionam para todos. Usar apenas o necessário evita desperdícios e contribui para a segurança do condomínio.</p>
+
+        <div class="grid">
+          <article class="card energy">
+            <h3>Apague as luzes</h3>
+            <p>Ao sair de um ambiente comum, desligue a iluminação quando houver interruptor acessível. Áreas vazias não precisam ficar iluminadas.</p>
+          </article>
+          <article class="card energy">
+            <h3>Aproveite a luz do dia</h3>
+            <p>Evite acender lâmpadas em halls, corredores e garagens que já estejam bem iluminados pela luz natural.</p>
+          </article>
+          <article class="card energy">
+            <h3>Portas e janelas fechadas</h3>
+            <p>Com o ar-condicionado ligado, mantenha o ambiente fechado. Isso evita que o equipamento trabalhe sem necessidade.</p>
+          </article>
+          <article class="card energy">
+            <h3>Desligue o que não usa</h3>
+            <p>Equipamentos ligados sem uso consomem energia. Siga as orientações de segurança do condomínio antes de desligar qualquer aparelho.</p>
+          </article>
+        </div>
+
+        <div class="callout">
+          <svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg>
+          <p>Não altere quadros elétricos, tomadas ou luminárias. Situações de risco devem ser comunicadas imediatamente à administração.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="comunicar" aria-labelledby="comunicar-titulo">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-icon form" aria-hidden="true">
+            <svg class="icon"><use href="#i-form"></use></svg>
+          </span>
+          <div>
+            <p class="eyebrow">Participação</p>
+            <h2 id="comunicar-titulo">O que comunicar</h2>
+          </div>
+        </div>
+        <p class="section-intro">Use o formulário para registrar situações observadas nas áreas comuns. Alguns exemplos do que pode ser comunicado:</p>
+
+        <ul class="checklist">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Torneira pingando ou vazamento em tubulação.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Descarga contínua ou vaso sanitário com fluxo constante.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Mangueira aberta sem uso.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Água acumulada ou infiltração em áreas comuns.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Luz acesa durante o dia sem necessidade.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Ar-condicionado ligado com portas ou janelas abertas.</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Equipamento ligado sem uso.</span></li>
+        </ul>
+
+        <div class="split">
+          <div class="panel">
+            <div class="panel-head">
+              <svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>
+              <h3>O que este canal faz</h3>
+            </div>
+            <p>Registra a situação e encaminha os dados à administração para avaliação. A identificação é opcional e o registro não é divulgado publicamente.</p>
+          </div>
+          <div class="panel">
+            <div class="panel-head">
+              <svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg>
+              <h3>O que este canal não faz</h3>
+            </div>
+            <p>Não substitui os canais de urgência, não realiza reparos e não garante prazo de atendimento. Serviços técnicos são responsabilidade da administração.</p>
+          </div>
+        </div>
+
+        <div class="urgent">
+          <svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg>
+          <p><strong>Em caso de urgência:</strong> vazamento grave, risco elétrico, incêndio ou outra emergência devem ser comunicados imediatamente à portaria ou à administração, pelos canais já definidos pelo condomínio.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section form-section" id="formulario" aria-labelledby="formulario-titulo">
+      <div class="container form-layout">
+        <div class="form-info">
+          <p class="eyebrow">Canal de comunicação</p>
+          <h2 id="formulario-titulo">Comunicar uma situação</h2>
+          <p>Preencha os campos com o que você observou. A administração receberá o registro para avaliação.</p>
+
+          <ul class="checklist" style="margin-top:18px">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Tipo de situação: água ou energia.</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Local e descrição do que foi observado.</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Data e horário aproximados.</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Nome e unidade são opcionais.</span></li>
+          </ul>
+
+          <div class="privacy">
+            <strong><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>Privacidade e uso dos dados</strong>
+            <p>Os dados serão usados apenas para encaminhar a ocorrência à administração. Nome e unidade são opcionais e não serão divulgados publicamente. O acesso aos registros será restrito às pessoas responsáveis pelo acompanhamento.</p>
+          </div>
+
+          <div class="urgent">
+            <svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg>
+            <p><strong>Não use este formulário para urgências.</strong> Procure a portaria ou a administração.</p>
+          </div>
+        </div>
+
+        <form class="form-card" id="report-form" name="comunicacao-desperdicio" method="post" data-netlify="true" netlify-honeypot="website">
+          <input type="hidden" name="form-name" value="comunicacao-desperdicio">
+          <input type="hidden" name="origem" value="Página Condomínio Consciente">
+          <div class="hp" aria-hidden="true">
+            <label for="website">Não preencha este campo</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <p class="form-note">Campos com <span class="req">*</span> são obrigatórios.</p>
+
+          <div class="demo-banner" id="demo-banner" hidden>
+            <strong>Modo de teste:</strong> as comunicações ainda não são enviadas à administração.
+          </div>
+
+          <fieldset class="field">
+            <legend>Tipo de situação <span class="req">*</span></legend>
+            <div class="radio-grid">
+              <label class="radio-card">
+                <input type="radio" name="tipo" value="Desperdício de água" required>
+                <svg class="icon" aria-hidden="true"><use href="#i-drop"></use></svg>
+                <span>
+                  <strong>Desperdício de água</strong>
+                  <small>Torneiras, vazamentos, mangueiras e descargas.</small>
+                </span>
+              </label>
+              <label class="radio-card energy">
+                <input type="radio" name="tipo" value="Desperdício de energia" required>
+                <svg class="icon" aria-hidden="true"><use href="#i-bolt"></use></svg>
+                <span>
+                  <strong>Desperdício de energia</strong>
+                  <small>Luzes, ar-condicionado e equipamentos.</small>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="local">Local da ocorrência <span class="req">*</span></label>
+            <input type="text" id="local" name="local" required maxlength="120" placeholder="Ex.: hall do bloco A, garagem, área de lazer" autocomplete="off">
+          </div>
+
+          <div class="field">
+            <label for="descricao">Descrição da situação <span class="req">*</span></label>
+            <textarea id="descricao" name="descricao" required maxlength="1000" placeholder="Descreva o que você observou. Se possível, informe há quanto tempo a situação acontece."></textarea>
+            <div class="field-hint">
+              <span>Não inclua dados pessoais de outros moradores.</span>
+              <span id="char-count" aria-live="polite">0/1000</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="data_hora">Data e horário aproximados <span class="req">*</span></label>
+            <input type="datetime-local" id="data_hora" name="data_hora" required>
+            <div class="field-hint"><span>Informe quando a situação foi observada.</span></div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="nome">Nome <span class="optional">(opcional)</span></label>
+              <input type="text" id="nome" name="nome" maxlength="80" autocomplete="name" placeholder="Seu nome">
+            </div>
+            <div class="field">
+              <label for="unidade">Unidade <span class="optional">(opcional)</span></label>
+              <input type="text" id="unidade" name="unidade" maxlength="20" autocomplete="off" placeholder="Ex.: 101, bloco B">
+            </div>
+          </div>
+
+          <div class="field consent">
+            <input type="checkbox" id="consentimento" name="consentimento" value="Sim" required>
+            <label for="consentimento">Estou ciente de que os dados serão encaminhados à administração para avaliação da ocorrência e que este formulário não é um canal de urgência. <span class="req">*</span></label>
+          </div>
+
+          <button class="btn btn-primary btn-block" type="submit" id="submit-btn">Enviar comunicação</button>
+          <p class="status" id="form-status" role="status" aria-live="polite" tabindex="-1"></p>
+
+          <noscript>
+            <p class="status info" style="display:block">Ative o JavaScript para enviar o formulário ou procure a portaria/administração para registrar a situação.</p>
+          </noscript>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Condomínio Consciente</strong>
+        <p>Orientações e canal de comunicação sobre água e energia nas áreas comuns.</p>
+      </div>
+      <div>
+        <strong>Condomínio Saint Marcelin</strong>
+        <p>Este formulário não é um canal de urgência.</p>
+        <p>Em situações de risco, procure a portaria ou a administração.</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>Página sem cookies de rastreamento.</span>
+      <span>Os registros do formulário são de acesso restrito à administração.</span>
+    </div>
+  </footer>
+
+  <script>
+    /*
+      CONFIGURAÇÃO DO ENVIO
+      ----------------------
+      1) Google Sheets + Apps Script (recomendado para este projeto):
+         mode: 'apps-script'
+         endpoint: 'https://script.google.com/macros/s/SEU_ID/exec'
+
+      2) Formspree:
+         mode: 'formspree'
+         endpoint: 'https://formspree.io/f/SEU_ID'
+
+      3) Netlify Forms (publique esta página no Netlify):
+         mode: 'netlify'
+         (não precisa de endpoint; o formulário já tem data-netlify="true")
+
+      4) Demonstração local (não envia para nenhum serviço):
+         mode: 'demo'
+    */
+    const FORM_CONFIG = {
+      mode: 'apps-script',
+      endpoint: 'https://script.google.com/macros/s/AKfycbzdGsHpPhGbQDjbjA8_Qj8cme_m7PenggjGdczW23_GW56AoR2mkI4D8CaKwX4oWEH5/exec',
+      storageKey: 'condominioConsciente.comunicacoes'
+    };
+
+    const form = document.getElementById('report-form');
+    const statusEl = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn');
+    const dateInput = document.getElementById('data_hora');
+    const descricaoInput = document.getElementById('descricao');
+    const charCount = document.getElementById('char-count');
+    const honeyPot = document.getElementById('website');
+    const demoBanner = document.getElementById('demo-banner');
+    const submitLabel = submitBtn ? submitBtn.textContent : 'Enviar comunicação';
+
+    function isDemoMode() {
+      return FORM_CONFIG.mode === 'demo' ||
+        (!FORM_CONFIG.endpoint && FORM_CONFIG.mode !== 'netlify');
+    }
+
+    if (demoBanner && isDemoMode()) {
+      demoBanner.hidden = false;
+    }
+
+    function toLocalInputValue(date) {
+      const pad = value => String(value).padStart(2, '0');
+      return date.getFullYear() + '-' +
+        pad(date.getMonth() + 1) + '-' +
+        pad(date.getDate()) + 'T' +
+        pad(date.getHours()) + ':' +
+        pad(date.getMinutes());
+    }
+
+    function setDateTimeDefault() {
+      if (!dateInput) return;
+      const now = new Date();
+      dateInput.value = toLocalInputValue(now);
+      dateInput.max = toLocalInputValue(new Date(now.getTime() + 10 * 60 * 1000));
+    }
+
+    function updateCharCount() {
+      if (!descricaoInput || !charCount) return;
+      charCount.textContent = descricaoInput.value.length + '/1000';
+    }
+
+    function showStatus(type, message) {
+      if (!statusEl) return;
+      statusEl.className = 'status ' + type;
+      statusEl.textContent = message;
+      statusEl.scrollIntoView({ block: 'nearest' });
+    }
+
+    function setLoading(isLoading) {
+      if (!submitBtn) return;
+      submitBtn.disabled = isLoading;
+      submitBtn.textContent = isLoading ? 'Enviando...' : submitLabel;
+      form.setAttribute('aria-busy', String(isLoading));
+    }
+
+    function saveDemo(payload) {
+      const key = FORM_CONFIG.storageKey;
+      const current = JSON.parse(localStorage.getItem(key) || '[]');
+      current.push({
+        ...payload,
+        recebido_em: new Date().toISOString()
+      });
+      localStorage.setItem(key, JSON.stringify(current));
+    }
+
+    function formToObject(formData) {
+      const data = {};
+      for (const [key, value] of formData.entries()) {
+        data[key] = typeof value === 'string' ? value.trim() : value;
+      }
+      return data;
+    }
+
+    async function sendToAppsScript(endpoint, formData) {
+      const body = new URLSearchParams();
+      for (const [key, value] of formData.entries()) {
+        body.append(key, value);
+      }
+      // O Apps Script não expõe CORS; o envio é feito em modo opaco.
+      await fetch(endpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        body
+      });
+    }
+
+    async function sendToFormspree(endpoint, formData) {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' }
+      });
+      if (!response.ok) {
+        throw new Error('Falha no envio para o Formspree.');
+      }
+    }
+
+    async function sendToNetlify(formData) {
+      const body = new URLSearchParams();
+      for (const [key, value] of formData.entries()) {
+        body.append(key, value);
+      }
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body
+      });
+      if (!response.ok) {
+        throw new Error('Falha no envio para o Netlify.');
+      }
+    }
+
+    if (form) {
+      setDateTimeDefault();
+      updateCharCount();
+
+      if (dateInput) {
+        dateInput.addEventListener('focus', () => {
+          dateInput.max = toLocalInputValue(new Date(Date.now() + 10 * 60 * 1000));
+        });
+      }
+
+      if (descricaoInput) {
+        descricaoInput.addEventListener('input', updateCharCount);
+      }
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        if (honeyPot && honeyPot.value.trim() !== '') {
+          showStatus('success', 'Comunicação enviada. Obrigado por colaborar.');
+          return;
+        }
+
+        const formData = new FormData(form);
+        const payload = formToObject(formData);
+        setLoading(true);
+        showStatus('info', 'Enviando comunicação...');
+
+        try {
+          if (isDemoMode()) {
+            saveDemo(payload);
+            showStatus('info', 'Registro salvo apenas para teste neste navegador. A administração ainda não recebeu esta comunicação.');
+          } else if (FORM_CONFIG.mode === 'apps-script') {
+            await sendToAppsScript(FORM_CONFIG.endpoint, formData);
+            showStatus('success', 'Comunicação enviada. Obrigado por colaborar.');
+          } else if (FORM_CONFIG.mode === 'formspree') {
+            await sendToFormspree(FORM_CONFIG.endpoint, formData);
+            showStatus('success', 'Comunicação enviada. Obrigado por colaborar.');
+          } else if (FORM_CONFIG.mode === 'netlify') {
+            await sendToNetlify(formData);
+            showStatus('success', 'Comunicação enviada. Obrigado por colaborar.');
+          } else {
+            throw new Error('Modo de envio inválido.');
+          }
+
+          form.reset();
+          setDateTimeDefault();
+          updateCharCount();
+        } catch (error) {
+          console.error(error);
+          showStatus('error', 'Não foi possível enviar agora. Tente novamente ou procure a administração.');
+        } finally {
+          setLoading(false);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
